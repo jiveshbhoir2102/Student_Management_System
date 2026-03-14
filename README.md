@@ -24,7 +24,7 @@ This application allows administrators to manage student records efficiently whi
 ![image alt](https://github.com/jiveshbhoir2102/Student_Management_System/blob/205da074cbf119e4145f53bdcd3a6d1e205ecb8d/Admin%20Login.png?raw=true)
 
 ### 2. Student Login
-![Student Login](https://via.placeholder.com/600x400?text=Student+Login)
+![image alt](https://github.com/jiveshbhoir2102/Student_Management_System/blob/main/Screenshot%20(476).png?raw=true)
 
 ### 3. Admin Dashboard
 ![image alt](https://github.com/jiveshbhoir2102/Student_Management_System/blob/main/Screenshot%20(466).png?raw=true)
