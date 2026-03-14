@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Student Profile</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI';
+background:#ecf0f1;
+}
+
+.container{
+display:flex;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+background:#2c3e50;
+color:white;
+height:100vh;
+padding:20px;
+position:fixed;
+}
+
+.sidebar h2{
+margin-bottom:25px;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar ul li{
+padding:14px;
+margin:10px 0;
+border-radius:6px;
+transition:0.3s;
+}
+
+.sidebar ul li:hover{
+background:#34495e;
+}
+
+.sidebar ul li a{
+color:white;
+text-decoration:none;
+display:block;
+}
+
+/* Main */
+
+.main{
+margin-left:260px;
+padding:40px;
+width:100%;
+}
+
+/* Profile Container */
+
+.profile-container{
+max-width:600px;
+margin:auto;
+}
+
+/* Header */
+
+.profile-header{
+background:linear-gradient(45deg,#3498db,#6dd5fa);
+padding:40px;
+border-radius:12px 12px 0 0;
+text-align:center;
+color:white;
+}
+
+/* Avatar */
+
+.avatar{
+width:110px;
+height:110px;
+border-radius:50%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+margin-top:-55px;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
+border:4px solid #ecf0f1;
+}
+
+.avatar i{
+font-size:48px;
+color:#3498db;
+}
+
+/* Profile Card */
+
+.profile-card{
+background:white;
+padding:30px;
+border-radius:0 0 12px 12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Name */
+
+.profile-name{
+text-align:center;
+font-size:26px;
+font-weight:bold;
+margin-top:15px;
+color:#2c3e50;
+}
+
+/* Info Grid */
+
+.info-grid{
+margin-top:25px;
+display:grid;
+gap:15px;
+}
+
+/* Info Box */
+
+.info-box{
+background:#f8f9fa;
+padding:15px;
+border-radius:8px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+font-size:18px;
+transition:0.3s;
+}
+
+.info-box:hover{
+background:#eaf4ff;
+transform:scale(1.02);
+}
+
+.info-left{
+display:flex;
+align-items:center;
+gap:10px;
+color:#555;
+font-weight:bold;
+}
+
+.info-left i{
+color:#3498db;
+font-size:20px;
+}
+
+.info-value{
+color:#2c3e50;
+font-weight:500;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<img src="/Img/SMS.png" alt="Logo" width="200">
+
+<ul>
+
+<li>
+<a th:href="@{/studentDashboard(name=${student.name})}">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a>
+</li>
+
+<li>
+<a th:href="@{/studentProfile(name=${student.name})}">
+<i class="fa-solid fa-user"></i> Profile
+</a>
+</li>
+
+<li>
+<a href="/">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="profile-container">
+
+<div class="profile-header">
+<h1>Student Profile</h1>
+</div>
+
+<div class="avatar">
+<i class="fa-solid fa-user"></i>
+</div>
+
+<div class="profile-card">
+
+<div class="profile-name" th:text="${student.name}"></div>
+
+<div class="info-grid">
+
+<div class="info-box">
+
+<div class="info-left">
+<i class="fa-solid fa-envelope"></i>
+Email
+</div>
+
+<div class="info-value" th:text="${student.email}"></div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-left">
+<i class="fa-solid fa-book"></i>
+Course
+</div>
+
+<div class="info-value" th:text="${student.course}"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

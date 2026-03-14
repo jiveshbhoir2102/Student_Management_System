@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Add Student</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI', Arial;
+background:#ecf0f1;
+}
+
+.container{
+display:flex;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+background:#2c3e50;
+color:white;
+height:100vh;
+padding:20px;
+position:fixed;
+}
+
+.sidebar h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar ul li{
+padding:14px;
+margin:10px 0;
+border-radius:6px;
+transition:0.3s;
+}
+
+.sidebar ul li:hover{
+background:#34495e;
+}
+
+.sidebar ul li a{
+color:white;
+text-decoration:none;
+display:block;
+font-size:16px;
+}
+
+.sidebar img{
+margin-bottom:20px;
+}
+
+/* Main */
+
+.main{
+margin-left:260px;
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+/* Form */
+
+.form-container{
+
+width:420px;
+padding:35px;
+
+border-radius:12px;
+
+background:linear-gradient(135deg,#2980b9,#6dd5fa);
+
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
+
+color:white;
+
+}
+
+.form-container h2{
+text-align:center;
+margin-bottom:25px;
+}
+
+.form-container label{
+font-weight:bold;
+}
+
+.form-container input{
+
+width:100%;
+padding:12px;
+
+margin:8px 0 15px 0;
+
+border:none;
+
+border-radius:6px;
+
+outline:none;
+
+}
+
+.form-container button{
+
+width:100%;
+padding:12px;
+
+background:#27ae60;
+
+color:white;
+
+border:none;
+
+border-radius:6px;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.form-container button:hover{
+
+background:#1e8449;
+
+transform:scale(1.03);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<img src="/Img/SMS.png" alt="Logo" width="200">
+
+<ul>
+
+<li><a href="/dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+
+<li><a href="/viewStudents"><i class="fa-solid fa-user-graduate"></i> Students</a></li>
+
+<li><a href="/add"><i class="fa-solid fa-user-plus"></i> Add Student</a></li>
+
+<li>
+<a href="/courses">
+<i class="fas fa-book-open"></i> courses
+</a>
+</li>
+
+
+<li><a href="/">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</a></li>
+
+</ul>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main">
+
+<div class="form-container">
+
+<h2>Add Student</h2>
+
+<form action="/saveStudent" method="post">
+
+<label>Name</label>
+<input type="text" name="name" required>
+
+<label>Email</label>
+<input type="email" name="email" required>
+
+<label>Course</label>
+<input type="text" name="course" required>
+
+<button type="submit">Save Student</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

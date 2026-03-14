@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Student Login</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+/* Layout */
+
+.container{
+display:flex;
+height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+background:#2c3e50;
+color:white;
+padding:20px;
+}
+
+.sidebar img{
+margin-bottom:20px;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar ul li{
+padding:14px;
+margin:10px 0;
+border-radius:6px;
+transition:0.3s;
+}
+
+.sidebar ul li:hover{
+background:#34495e;
+}
+
+.sidebar ul li a{
+color:white;
+text-decoration:none;
+display:block;
+}
+
+/* Main area */
+
+.main{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+/* Glass Login Card */
+
+.login-box{
+width:360px;
+padding:40px;
+border-radius:15px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+text-align:center;
+color:white;
+animation:fadeIn 1s ease;
+}
+
+/* Animation */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(-20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Heading */
+
+.login-box h2{
+margin-bottom:25px;
+letter-spacing:1px;
+}
+
+/* Input Box */
+
+.input-box{
+position:relative;
+margin-bottom:20px;
+}
+
+.input-box input{
+width:100%;
+padding:12px 40px 12px 12px;
+border:none;
+outline:none;
+border-radius:8px;
+font-size:15px;
+background:rgba(255,255,255,0.9);
+transition:0.3s;
+}
+
+.input-box input:focus{
+transform:scale(1.02);
+box-shadow:0 0 10px rgba(255,255,255,0.6);
+}
+
+/* Icon */
+
+.input-box i{
+position:absolute;
+right:12px;
+top:13px;
+color:#555;
+}
+
+/* Button */
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:linear-gradient(135deg,#ff7eb3,#ff758c);
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Error */
+
+.error{
+color:#ff4d4d;
+margin-top:15px;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<img src="/Img/SMS.png" alt="Logo" width="200">
+
+<ul>
+
+<li>
+<a href="/dashboard">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a>
+</li>
+
+
+
+
+<li>
+<a href="/">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="login-box">
+
+<h2><i class="fa-solid fa-user-graduate"></i> Student Login</h2>
+
+<form th:action="@{/studentDashboard}" method="post">
+
+<div class="input-box">
+<input type="text" name="name" placeholder="Enter Student Name" required>
+<i class="fa-solid fa-user"></i>
+</div>
+
+<button type="submit">
+<i class="fa-solid fa-right-to-bracket"></i> Open Dashboard
+</button>
+
+</form>
+
+<p class="error" th:text="${error}"></p>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

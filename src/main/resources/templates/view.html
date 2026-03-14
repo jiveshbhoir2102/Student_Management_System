@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Students</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial;
+            background: #ecf0f1;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: #2c3e50;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li:hover {
+            background: #34495e;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+        }
+
+        .sidebar i {
+            margin-right: 10px;
+        }
+
+        /* Main */
+        .main {
+            margin-left: 260px;
+            padding: 40px;
+            width: 100%;
+        }
+
+        /* Heading + Search */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .main-header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+
+        .search-box form {
+            display: flex;
+        }
+
+        .search-box input {
+            padding: 10px;
+            width: 220px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-box button {
+            padding: 10px 14px;
+            background: #3498db;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #2980b9;
+        }
+
+        /* Table */
+        table {
+            width: 90%;
+            margin: 0 auto; /* center table */
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 15px;
+            color: #2c3e50;
+        }
+
+        tr:hover {
+            background: #f0f3f7;
+        }
+
+        /* Action Buttons */
+        .btn {
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .edit {
+            background: #27ae60;
+        }
+
+        .edit:hover {
+            background: #219150;
+        }
+
+        .delete {
+            background: #e74c3c;
+        }
+
+        .delete:hover {
+            background: #c0392b;
+        }
+
+        /* Pagination */
+        .pagination {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .pagination a,
+        .pagination span {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 0 3px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #3498db;
+            border: 1px solid #3498db;
+            transition: 0.3s;
+        }
+
+        .pagination a:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .pagination .current {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="/Img/SMS.png" alt="Logo" width="200">
+        <ul>
+            <li><a href="/dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="/viewStudents"><i class="fa-solid fa-user-graduate"></i> Students</a></li>
+            <li><a href="/add"><i class="fa-solid fa-user-plus"></i> Add Student</a></li>
+            <li>
+<a href="/courses">
+<i class="fas fa-book-open"></i> courses
+</a>
+</li>
+
+
+<li><a href="/">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</a></li>
+            
+        </ul>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="main-header">
+            <h1>Students</h1>
+
+            <div class="search-box">
+                <form action="/search">
+                    <input type="text" name="keyword" placeholder="Search student">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Students Table -->
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="s : ${students}">
+                <td th:text="${s.id}"></td>
+                <td th:text="${s.name}"></td>
+                <td th:text="${s.email}"></td>
+                <td th:text="${s.course}"></td>
+                <td>
+                    <a class="btn edit" th:href="@{/edit/{id}(id=${s.id})}">
+                        <i class="fa-solid fa-pen"></i> Edit
+                    </a>
+                    <a class="btn delete" th:href="@{/delete/{id}(id=${s.id})}">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination" th:if="${search == null}">
+    
+    <a th:if="${currentPage > 0}" 
+       th:href="@{/viewStudents(page=${currentPage - 1})}">
+       &laquo; Prev
+    </a>
+
+    <span th:each="i : ${#numbers.sequence(0, totalPages-1)}"
+          th:classappend="${i == currentPage} ? 'current' : ''"
+          th:text="${i + 1}">
+    </span>
+
+    <a th:if="${currentPage < totalPages -1}" 
+       th:href="@{/viewStudents(page=${currentPage + 1})}">
+       Next &raquo;
+    </a>
+
+</div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

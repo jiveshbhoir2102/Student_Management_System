@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Courses</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI';
+background:#ecf0f1;
+}
+
+.container{
+display:flex;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+background:#2c3e50;
+color:white;
+height:100vh;
+padding:20px;
+position:fixed;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar ul li{
+padding:14px;
+margin:10px 0;
+border-radius:6px;
+}
+
+.sidebar ul li:hover{
+background:#34495e;
+}
+
+.sidebar ul li a{
+color:white;
+text-decoration:none;
+}
+
+/* Main */
+
+.main{
+margin-left:260px;
+padding:40px;
+width:100%;
+}
+
+.course-card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+margin-bottom:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.course-card i{
+font-size:25px;
+color:#3498db;
+}
+
+.count{
+margin-bottom:25px;
+font-size:22px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<img src="/Img/SMS.png" alt="Logo" width="200">
+
+<ul>
+
+<li>
+<a href="/dashboard">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a>
+</li>
+
+<li>
+<a href="/viewStudents">
+<i class="fa-solid fa-user-graduate"></i> Students
+</a>
+</li>
+
+<li>
+<a href="/add">
+<i class="fa-solid fa-user-plus"></i> Add Student
+</a>
+</li>
+
+
+<li>
+<a href="/courses">
+<i class="fas fa-book-open"></i> courses
+</a>
+</li>
+
+
+<li><a href="/">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</a></li>
+
+
+</ul>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<h1>Courses</h1>
+
+<div class="count">
+Total Courses: <span th:text="${courseCount}"></span>
+</div>
+
+<div th:each="c : ${courses}" class="course-card">
+
+<h3 th:text="${c}"></h3>
+
+<i class="fa-solid fa-book"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

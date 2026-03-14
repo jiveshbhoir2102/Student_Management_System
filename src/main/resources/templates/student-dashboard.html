@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Student Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI', Arial;
+background:#ecf0f1;
+}
+
+.container{
+display:flex;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+background:#2c3e50;
+color:white;
+height:100vh;
+padding:20px;
+position:fixed;
+}
+
+.sidebar img{
+margin-bottom:20px;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar ul li{
+padding:14px;
+margin:10px 0;
+border-radius:6px;
+transition:0.3s;
+}
+
+.sidebar ul li:hover{
+background:#34495e;
+}
+
+.sidebar ul li a{
+color:white;
+text-decoration:none;
+display:block;
+}
+
+/* Main */
+
+.main{
+margin-left:260px;
+padding:40px;
+width:100%;
+}
+
+/* Cards */
+
+.cards{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+margin-top:20px;
+justify-content:center;
+}
+
+.card{
+flex:1;
+min-width:250px;
+max-width:320px;
+padding:25px;
+border-radius:12px;
+color:white;
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
+transition:0.3s;
+
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+
+word-break:break-word;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+/* Card colors */
+
+.blue{
+background:linear-gradient(45deg,#2980b9,#3498db);
+}
+
+.green{
+background:linear-gradient(45deg,#27ae60,#2ecc71);
+}
+
+.orange{
+background:linear-gradient(45deg,#f39c12,#f1c40f);
+color:black;
+}
+
+.card h2{
+margin:0;
+font-size:24px;
+line-height:1.3;
+}
+
+.card p{
+margin-top:8px;
+font-size:18px;
+}
+
+.card i{
+font-size:30px;
+align-self:flex-end;
+margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<img src="/Img/SMS.png" alt="Logo" width="200">
+
+<ul>
+
+<li><a href="/studentDashboard">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a></li>
+
+<li>
+<a th:href="@{/studentProfile(name=${student.name})}">
+<i class="fa-solid fa-user"></i> Profile
+</a>
+</li>
+
+
+
+<li><a href="/">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</a></li>
+
+</ul>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<h1>Welcome, <span th:text="${student.name}"></span> 👋</h1>
+
+<div class="cards">
+
+<div class="card blue">
+
+<i class="fa-solid fa-user"></i>
+
+<h2 th:text="${student.name}">Student Name</h2>
+
+<p>Student Name</p>
+
+</div>
+
+<div class="card green">
+
+<i class="fa-solid fa-book"></i>
+
+<h2 th:text="${student.course}">Course</h2>
+
+<p>Course Enrolled</p>
+
+</div>
+
+<div class="card orange">
+
+<i class="fa-solid fa-envelope"></i>
+
+<h2 th:text="${student.email}">Email</h2>
+
+<p>Email Address</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
