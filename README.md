@@ -40,6 +40,10 @@ This application allows administrators to manage student records efficiently whi
 ![image alt](https://github.com/jiveshbhoir2102/Student_Management_System/blob/main/Screenshot%20(471).png?raw=true)
 
 
+### 7. Students Page
+![image alt](https://github.com/jiveshbhoir2102/Student_Management_System/blob/main/Screenshot%20(467).png?raw=true)
+
+
 
 ---
 
